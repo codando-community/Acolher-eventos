@@ -89,7 +89,7 @@ generateEvent(
     container,
     "Despertando a Consciência: Rumo a uma Vida de Plenitude e Realização",
     "Nome Sobrenome, compartilhará insights profundos sobre como despertar a consciência e viver uma vida de plenitude e realização. Descubra práticas para expandir sua consciência e alcançar seu potencial máximo.",
-    "2024-04-20",
+    "2024-04-22",
     "https://www.sympla.com.br/despertando-a-consciencia-rumo-a-uma-vida-de-plenitude-e-realizacao/3098754",
     "https://animaeducacao.zoom.us/rec/share/-WdN3Aj8oiLmuzMxWOcFBjNJaEj_HNEKMhslAHEBuUOgWLDySakJXOAL0VH4KEqe.E_8ULXl77vSLhN8q",
     ["Consciência", "Realização Pessoal"],
