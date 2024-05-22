@@ -1,0 +1,191 @@
+@font-face {
+	font-family: "Monoton";
+	src:
+		local("Monoton"),
+		url("../font/Monoton-Regular.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Rubik";
+	src:
+		local("Rubik"),
+		url("../font/Rubik-VariableFont_wght.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Rubik";
+	src:
+		local("Rubik"),
+		url("../font/Rubik-VariableFont_wght.ttf");
+	font-weight: bold;
+}
+
+html {
+	font-size: 10px;
+	scroll-behavior: smooth;
+}
+
+body {
+	box-sizing: border-box;
+	background: radial-gradient(ellipse at 50% 0%, navy 0%, black 66%);
+	color: white;
+	font-family: Rubik, sans-serif;
+	font-weight: 400;
+	font-size: 1.6rem;
+	line-height: 1.6;
+}
+
+
+/* ---- Grid ---- */
+.grid-container {
+	display: grid;
+	grid-template-columns: minmax(200px, 1fr);
+	grid-gap: 20px;
+	gap: 20px;
+	position: relative;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+}
+
+@media (min-width: 600px) {
+	.grid-container {
+		grid-template-columns: repeat(3, 1fr);
+		padding: 10px 0;
+	}	
+}
+
+
+/* ---- External ---- */
+#external {
+	height: 5rem;
+	margin: 1rem 0;
+	background-color: #303030;
+}
+
+#external > .grid-container {
+	grid-template-columns: repeat(4, 1fr) !important;
+}
+
+#external a {
+	color: white;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+#external i {
+	font-size: 30px;
+	transform: translateY(-10px);
+}
+
+#external .link-label {
+	display: none;
+}
+
+@media (min-width: 600px) {
+	#external {
+		margin-top: 6rem;
+	}
+
+	/* Fine adjustments */
+	#external i {
+		padding-right: 0.8rem;
+		font-size: 25px;
+		transform: translateY(2px);
+	}
+
+	#external .fa-link,
+	#external .fa-lightbulb {
+		font-size: 20px;
+		transform: translateY(3px);
+	}
+
+	#external .link-label {
+		display: inline-block;
+		transform: translateY(-1px);
+	}
+
+	#external .fa-link + .link-label,
+	#external .fa-lightbulb + .link-label {
+		transform: translateY(2px);
+	}
+}
+
+
+/* ---- Footer ---- */
+footer.grid-container p {
+	font-size: 1.2rem;
+	text-wrap: balance;
+	pointer-events: none;
+}
+
+.logo {
+	display: none;
+}
+
+@media (min-width: 600px) {
+	footer.grid-container {
+		grid-template-columns: 2fr 4fr 2fr !important;
+		max-width: unset;
+		min-height: 8vw;
+	}
+
+	footer.grid-container > div:nth-child(2) {
+		max-width: 960px !important;
+		padding: 2rem 0;
+	}
+
+	footer.grid-container p {
+		font-size: 1.5rem;
+	}
+
+	.logo {
+		display: block;
+	}
+
+	#acolher {
+		transform: translateY(-5px);
+		background: url(../img/logo/acolher.png) no-repeat center / contain;
+	}
+
+	#negociando {
+		transform: translateY(-3px);
+		background: url(../img/logo/negociando.png) no-repeat center / contain;
+	}
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+	.logo {
+		width: 80%;
+	}
+
+	#acolher {
+		transform: translateX(2rem);
+	}
+
+	#negociando {
+		transform: translateX(1rem);
+	}
+}
+
+
+/* ---- Background ---- */
+.bg {
+	display: none;
+}
+
+@media (min-width: 1024px) {
+	.bg {
+		display: block;
+		position: fixed;
+		top: 0;
+		z-index: -1;
+		width: 100vw;
+		height: 100vh;
+		/* background: url(../img/theater.jpg) no-repeat center / cover; */
+		opacity: 0.3;
+	}
+}

@@ -1,0 +1,367 @@
+:root {
+	--accent-bright: dodgerblue;
+	--accent-light: midnightblue;
+	--accent-dark: #0c002b;
+}
+
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+.img-title{
+	height: 30rem;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+	background-image: url("../img/logo/acolher.png");
+	background-repeat: no-repeat;
+	background-size: 30%;
+	background-position: top;
+	text-align: bottom;
+}
+.title {
+	margin: 175px 0 60px 2em;
+	color: cornflowerblue;
+	font-weight: normal;
+	font-size: 33px;
+	font-family: Monoton, sans-serif;
+	text-align: left;
+	text-transform: uppercase;
+	text-indent: -0.8em;
+	text-shadow: 0 0 0 transparent,
+		0 0 20px rgba(0, 0, 255, 1),
+		0 0 50px rgba(0, 0, 255, 0.5),
+		0 0 200px rgba(0, 0, 255, 0.5),
+		0 0 250px rgba(0, 0, 255, 1),
+		0 0 300px rgba(0, 0, 255, 1),
+		-250px -100px 100px rgba(0, 0, 255, 1);
+	white-space: nowrap;
+	cursor: default;
+	transform: skew(0, -12deg) rotateZ(5deg);
+	animation: flicker 5s infinite alternate;
+}
+
+@keyframes flicker {
+	44%, 46%, 98%, 100% {
+		opacity: 1;
+	}
+	45%, 99% {
+		opacity: 0.7;
+	}
+}
+
+@media (min-width: 380px) {
+	.title {
+		font-size: 34px;
+	}
+}
+
+@media (min-width: 400px) {
+	.title {
+		font-size: 38px;
+	}
+}
+
+@media (min-width: 600px) {
+	.title {
+		font-size: 54px;
+	}
+}
+
+@media (min-width: 800px) {
+	.title {
+		font-size: 72px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.title {
+		font-size: 84px;
+	}
+}
+
+.section {
+	list-style: none;
+	padding: 0;
+	padding-top: 5px;
+	width: 100%;
+}
+
+@media (min-width: 800px) {
+	.section {
+		padding-top: 15px;
+	}
+}
+
+.filter-container{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.filter-container > label{
+	padding-right: 7px;
+}
+
+#tag-filter{
+	border-radius: 1rem;
+	color: #aaa;
+	background-color: rgba(30, 30, 30, 0.6);
+}
+
+/* ---- Card ---- */
+.card {
+	display: flex;
+	margin: 0 40px 20px 20px;
+}
+
+.card-element-date {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-width: 75px;
+	font-weight: bold;
+	line-height: 1.3;
+	text-transform: uppercase;
+	pointer-events: none;
+}
+
+.card-element-text-highlight {
+	font-size: 32px;
+}
+
+.card-element-text {
+	font-size: 16px;
+}
+
+.card-block-wrapper {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+}
+
+.card-block {
+	padding: 20px;
+	background-color: rgba(30, 30, 30, 0.6);
+}
+
+.card-block > *:last-child {
+	margin-bottom: 0;
+}
+
+.card-block-primary {
+	flex: 1;
+	padding-bottom: 0;
+	pointer-events: none;
+}
+
+.card-block-secondary {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding-top: 0;
+}
+
+@media (min-width: 600px) {
+	.card-block-wrapper {
+		flex-direction: row;
+	}
+	.card-block-primary {
+		padding-bottom: 20px;
+	}
+	.card-block-secondary {
+		padding-top: 20px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.card {
+		margin: 0 0 20px 0;
+	}
+}
+
+
+/* ---- Primary ---- */
+.card-title {
+	margin: 0;
+	margin-bottom: 1.3em;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+	text-wrap: balance;
+	/*text-transform: capitalize;*/
+}
+
+.card-subtitle {
+	display: none;
+}
+
+.card-title + .card-subtitle {
+	margin-top: -0.6em;
+}
+
+@media (min-width: 400px) {
+	.card-title {
+		font-size: 20px;
+	}
+}
+
+@media (min-width: 600px) {
+	.card-title {
+		text-align: left;
+		text-wrap: wrap;
+	}
+	.card-subtitle {
+		display: block;
+		color: #aaa;
+		text-align: justify;
+		text-justify: inter-word;
+	}
+}
+
+
+/* ---- Secondary ---- */
+.portrait {
+	width: 120px;
+	height: 120px;
+	margin-bottom: 20px;
+	background: #ccc center 20%/120px no-repeat;
+	border-radius: 50%;
+	border: 2px solid var(--accent-bright);
+}
+
+.card-button {
+	padding: 20px 30px;
+	border: none;
+	border-radius: 22px;
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 4px;
+	transition: transform 0.2s;
+}
+
+.card-button:hover {
+	color: white;
+}
+
+.card-button:active {
+	outline: 0;
+	transform: scale(0.95);
+}
+
+.button-event {
+	background-color: var(--accent-bright);
+}
+
+.button-recording {
+	background-color: #aaa;
+}
+
+.button-recording:hover {
+	background-color: var(--accent-bright);
+}
+
+@media (min-width: 600px) {
+	.card-button {
+		min-width: unset;
+	}
+}
+
+
+/* ---- Finished event ---- */
+.finished-event :is(.card-element-date, .card-block-primary) * {
+	opacity: 0.2;
+}
+
+.finished-event .portrait {
+	filter: grayscale(100%);
+}
+
+.finished-event button a {
+	color: #555;
+}
+
+
+/* ---- Current event ---- */
+.current-event {
+	transform: translate(0%);
+	overflow: hidden;
+}
+
+.current-event .animRight {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(to right, var(--accent-dark), var(--accent-bright));
+	animation: animRight 2s linear infinite;
+}
+
+@keyframes animRight {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.current-event .animDown {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(to bottom, var(--accent-dark), var(--accent-bright));
+	animation: animDown 2s linear 1s infinite;
+}
+
+@keyframes animDown {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(100%);
+	}
+}
+
+.current-event .animLeft {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(to left, var(--accent-dark), var(--accent-bright));
+	animation: animLeft 2s linear infinite;
+}
+
+@keyframes animLeft {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+.current-event .animUp {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(to top, var(--accent-dark), var(--accent-bright));
+	animation: animUp 2s linear 1s infinite;
+}
+
+@keyframes animUp {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(-100%);
+	}
+}
