@@ -41,20 +41,13 @@ body {
 /* ---- Grid ---- */
 .grid-container {
 	display: grid;
-	grid-template-columns: minmax(200px, 1fr);
-	grid-gap: 20px;
-	gap: 20px;
-	position: relative;
 	max-width: 960px;
 	margin: 0 auto;
-	padding: 20px;
-	text-align: center;
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
 	.grid-container {
 		grid-template-columns: repeat(3, 1fr);
-		padding: 10px 0;
 	}	
 }
 
@@ -67,7 +60,8 @@ body {
 }
 
 #external > .grid-container {
-	grid-template-columns: repeat(4, 1fr) !important;
+	grid-template-columns: repeat(4, 1fr);
+	text-align: center;
 }
 
 #external a {
@@ -85,12 +79,12 @@ body {
 	display: none;
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
 	#external {
 		margin-top: 6rem;
 	}
 
-	/* Fine adjustments */
+	/* Adjust misalignments */
 	#external i {
 		padding-right: 0.8rem;
 		font-size: 25px;
@@ -104,7 +98,7 @@ body {
 	}
 
 	#external .link-label {
-		display: inline-block;
+		display: inline;
 		transform: translateY(-1px);
 	}
 
@@ -118,6 +112,7 @@ body {
 /* ---- Footer ---- */
 footer.grid-container p {
 	font-size: 1.2rem;
+	text-align: center;
 	text-wrap: balance;
 	pointer-events: none;
 }
@@ -126,16 +121,11 @@ footer.grid-container p {
 	display: none;
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
 	footer.grid-container {
-		grid-template-columns: 2fr 4fr 2fr !important;
+		grid-template-columns: 2fr 4fr 2fr;
 		max-width: unset;
 		min-height: 8vw;
-	}
-
-	footer.grid-container > div:nth-child(2) {
-		max-width: 960px !important;
-		padding: 2rem 0;
 	}
 
 	footer.grid-container p {
@@ -157,7 +147,7 @@ footer.grid-container p {
 	}
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
+@media (600px <= width <= 1024px) {
 	.logo {
 		width: 80%;
 	}
@@ -177,7 +167,7 @@ footer.grid-container p {
 	display: none;
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
 	.bg {
 		display: block;
 		position: fixed;
@@ -185,7 +175,7 @@ footer.grid-container p {
 		z-index: -1;
 		width: 100vw;
 		height: 100vh;
-		/* background: url(../img/theater.jpg) no-repeat center / cover; */
+		background: url(../img/theater.jpg) no-repeat center / cover;
 		opacity: 0.3;
 	}
 }

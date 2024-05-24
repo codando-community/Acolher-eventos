@@ -1,7 +1,6 @@
 :root {
-	--accent-bright: dodgerblue;
-	--accent-light: midnightblue;
 	--accent-dark: #0c002b;
+	--accent-light: dodgerblue;
 }
 
 .container {
@@ -20,15 +19,15 @@
 	background-position: top;
 	text-align: bottom;
 }
+
 .title {
-	margin: 175px 0 60px 2em;
+	margin: 175px 0 60px 0;
 	color: cornflowerblue;
-	font-weight: normal;
+	font-weight: bold;
 	font-size: 33px;
-	font-family: Monoton, sans-serif;
-	text-align: left;
+	font-family: fantasy, sans-serif;
+	text-align: center;
 	text-transform: uppercase;
-	text-indent: -0.8em;
 	text-shadow: 0 0 0 transparent,
 		0 0 20px rgba(0, 0, 255, 1),
 		0 0 50px rgba(0, 0, 255, 0.5),
@@ -51,71 +50,47 @@
 	}
 }
 
-@media (min-width: 380px) {
-	.title {
-		font-size: 34px;
-	}
-}
-
-@media (min-width: 400px) {
+@media (width >= 400px) {
 	.title {
 		font-size: 38px;
 	}
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
 	.title {
 		font-size: 54px;
 	}
 }
 
-@media (min-width: 800px) {
+@media (width >= 800px) {
 	.title {
+		margin-bottom: 100px;
 		font-size: 72px;
 	}
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
 	.title {
 		font-size: 84px;
-	}
-}
-
-.section {
-	list-style: none;
-	padding: 0;
-	padding-top: 5px;
-	width: 100%;
-}
-
-@media (min-width: 800px) {
-	.section {
-		padding-top: 15px;
 	}
 }
 
 .filter-container{
 	display: flex;
 	justify-content: flex-end;
+	margin: 1rem 0.5rem;
 }
 
 .filter-container > label{
-	padding-right: 7px;
+	margin: 0 1.2rem;
 }
 
-#tag-filter{
-	border-radius: 1rem;
-	color: #aaa;
-	background-color: rgba(30, 30, 30, 0.6);
-}
-
-/* ---- Card ---- */
-.card {
+.card-section {
 	display: flex;
 	margin: 0 40px 20px 20px;
 }
 
-.card-element-date {
+.card-date {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -126,109 +101,119 @@
 	pointer-events: none;
 }
 
-.card-element-text-highlight {
+.card-day {
 	font-size: 32px;
 }
 
-.card-element-text {
+.card-month {
 	font-size: 16px;
 }
 
-.card-block-wrapper {
-	display: flex;
-	flex-direction: column;
-	flex-basis: 100%;
+.card-main {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	grid-template-areas:
+		"info side"
+		"info side"
+		"summ summ";
+	width: 100%;
 }
 
 .card-block {
-	padding: 20px;
-	background-color: rgba(30, 30, 30, 0.6);
+	padding: 1rem 2rem 2rem 2rem;
+	background-color: rgb(30, 30, 30, 0.6);
 }
 
 .card-block > *:last-child {
 	margin-bottom: 0;
 }
 
-.card-block-primary {
-	flex: 1;
+.card-info {
+	grid-area: info;
 	padding-bottom: 0;
 	pointer-events: none;
 }
 
-.card-block-secondary {
+.card-aside {
+	grid-area: side;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
 	align-items: center;
-	padding-top: 0;
 }
 
-@media (min-width: 600px) {
-	.card-block-wrapper {
+.card-summary {
+	grid-area: summ;
+	overflow: hidden;
+    line-height: 1.5em;
+    max-height: 4.5em;
+    transition: max-height 0.5s ease-out;
+	background-color: transparent;
+}
+
+@media (width >= 600px) {
+	.card-main {
 		flex-direction: row;
 	}
-	.card-block-primary {
+	.card-info {
 		padding-bottom: 20px;
-	}
-	.card-block-secondary {
-		padding-top: 20px;
 	}
 }
 
-@media (min-width: 1024px) {
-	.card {
+@media (width >= 1024px) {
+	.card-section {
 		margin: 0 0 20px 0;
 	}
 }
 
 
-/* ---- Primary ---- */
 .card-title {
 	margin: 0;
-	margin-bottom: 1.3em;
 	font-weight: bold;
 	font-size: 16px;
 	text-align: center;
 	text-wrap: balance;
-	/*text-transform: capitalize;*/
 }
 
-.card-subtitle {
-	display: none;
+.card-tags {
+	padding: 0;
+	display: flex;
+	flex-flow: row wrap;
 }
 
-.card-title + .card-subtitle {
-	margin-top: -0.6em;
+.tag {
+	width: fit-content;
+	margin: 0.5rem 1rem;
+	padding: 2px 10px;
+	background: linear-gradient(var(--theme), color-mix(in srgb, var(--theme), black 70%));
+	border-radius: 999px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	pointer-events: none;
 }
 
-@media (min-width: 400px) {
+@media (width >= 400px) {
 	.card-title {
 		font-size: 20px;
 	}
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
 	.card-title {
 		text-align: left;
 		text-wrap: wrap;
 	}
-	.card-subtitle {
-		display: block;
-		color: #aaa;
-		text-align: justify;
-		text-justify: inter-word;
-	}
+
 }
 
 
-/* ---- Secondary ---- */
+/* ---- Aside ---- */
 .portrait {
 	width: 120px;
 	height: 120px;
 	margin-bottom: 20px;
 	background: #ccc center 20%/120px no-repeat;
 	border-radius: 50%;
-	border: 2px solid var(--accent-bright);
+	border: 2px solid var(--accent-light);
 }
 
 .card-button {
@@ -252,7 +237,7 @@
 }
 
 .button-event {
-	background-color: var(--accent-bright);
+	background-color: var(--accent-light);
 }
 
 .button-recording {
@@ -260,19 +245,72 @@
 }
 
 .button-recording:hover {
-	background-color: var(--accent-bright);
+	background-color: var(--accent-light);
 }
 
-@media (min-width: 600px) {
+@media (width >= 600px) {
 	.card-button {
 		min-width: unset;
 	}
 }
 
 
+/* ---- Summary ---- */
+summary {
+	display: flex;
+	padding-bottom: 10px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+summary::before {
+	content: "\2B9E";
+	display: inline-block;
+	margin-right: 10px;
+	transition: transform 0.2s;
+}
+
+details {
+	display: none;
+}
+
+details[open] {
+	display: unset;
+}
+
+details[open] summary::before {
+	transform: rotate(90deg);
+}
+
+details[open] summary {
+	border-bottom: 1px solid #aaa;
+}
+
+details[open] summary ~ * {
+	animation: fade-in 1s ease-in;
+}
+
+details[open] div {
+	padding: 5px 10px;
+	color: #aaa;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: var(--opacity);	/* Needs a var so the text doesn't flash if details[open] + .finished-event */
+	}
+}
+
+
 /* ---- Finished event ---- */
-.finished-event :is(.card-element-date, .card-block-primary) * {
-	opacity: 0.2;
+.finished-event :is(.card-date, .card-info, .card-summary) * {
+	--opacity: 0.5;
+	opacity: var(--opacity);
 }
 
 .finished-event .portrait {
@@ -286,82 +324,82 @@
 
 /* ---- Current event ---- */
 .current-event {
-	transform: translate(0%);
 	overflow: hidden;
+	transform: translate(0%);
+}
+
+.current-event > span {
+	position: absolute;
 }
 
 .current-event .animRight {
-	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 2px;
-	background: linear-gradient(to right, var(--accent-dark), var(--accent-bright));
+	background: linear-gradient(to right, var(--accent-dark), var(--accent-light));
 	animation: animRight 2s linear infinite;
 }
 
 @keyframes animRight {
-	0% {
+	from {
 		transform: translateX(-100%);
 	}
-	100% {
+	to {
 		transform: translateX(100%);
 	}
 }
 
 .current-event .animDown {
-	position: absolute;
 	top: 0;
 	right: 0;
 	width: 2px;
 	height: 100%;
-	background: linear-gradient(to bottom, var(--accent-dark), var(--accent-bright));
+	background: linear-gradient(to bottom, var(--accent-dark), var(--accent-light));
 	animation: animDown 2s linear 1s infinite;
 }
 
 @keyframes animDown {
-	0% {
+	from {
 		transform: translateY(-100%);
 	}
-	100% {
+	to {
 		transform: translateY(100%);
 	}
 }
 
 .current-event .animLeft {
-	position: absolute;
 	bottom: 0;
-	left: 0;
+	right: 0;
 	width: 100%;
 	height: 2px;
-	background: linear-gradient(to left, var(--accent-dark), var(--accent-bright));
+	background: linear-gradient(to left, var(--accent-dark), var(--accent-light));
 	animation: animLeft 2s linear infinite;
 }
 
 @keyframes animLeft {
-	0% {
+	from {
 		transform: translateX(100%);
 	}
-	100% {
+	to {
 		transform: translateX(-100%);
 	}
 }
 
 .current-event .animUp {
-	position: absolute;
-	top: 0;
+	bottom: 0;
 	left: 0;
 	width: 2px;
 	height: 100%;
-	background: linear-gradient(to top, var(--accent-dark), var(--accent-bright));
+	background: linear-gradient(to top, var(--accent-dark), var(--accent-light));
 	animation: animUp 2s linear 1s infinite;
 }
 
 @keyframes animUp {
-	0% {
+	from {
 		transform: translateY(100%);
 	}
-	100% {
+	to {
 		transform: translateY(-100%);
 	}
 }

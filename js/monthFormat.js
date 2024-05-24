@@ -1,6 +1,6 @@
 // Replace month numbers with their abbreviations
 function replaceMonth() {
-	var monthElements = document.body.querySelectorAll(".card-element-text");
+	var monthElements = document.body.querySelectorAll(".card-month");
 
 	monthElements.forEach(function(monthElement) {
 		var month = monthElement.textContent.trim().toLowerCase();
