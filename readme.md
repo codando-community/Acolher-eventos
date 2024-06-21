@@ -46,7 +46,10 @@ Um parâmetro está ausente em `generateEvent()` @ js/cardInfo
 
 ## CREDITOS
 
-Gabriel Lacerda - CSS</br>
-Rafael Vaz - JS</br>
+Gabriel Lacerda - CSS
+</br>
+Rafael Vaz - JS
+</br>
 Manel Roig @ FreeFrontend - Botão com setas
+</br>
 Felix Mooneeram @ Unsplash - Imagem de fundo
