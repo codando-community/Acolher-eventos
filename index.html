@@ -2,64 +2,45 @@
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="description" content="Programação Eventos Projeto Acolher">
+		<meta name="description" content="Programação Eventos - Projeto Acolher">
 		<meta name="author" content="Gabriel Lacerda, Rafael Vaz">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/custom.css">
-		<link rel="stylesheet" href="css/calendar.css">
+		<style>
+			@import url(css/normalize.css) layer(reset);
+			@import url(css/base.css) layer(base);
+		</style>
+		<link rel="stylesheet" href="css/schedule.css">
 		<link rel="stylesheet" href="css/tags.css">
 		<title>Eventos - Acolher</title>
 	</head>
 	<body>
-		<div class="container">
-			<div class="img-title">
-			<h1 class="title">
-				Eventos
-			</h1>
+		<main>
+			<div class="header">
+			<h1 class="header-text">Eventos</h1>
+			<h1 class="header-text" id="carousel">Acolher</h1>
 			</div>
 			<div class="filter-container">
-				<label for="combined-filter">Filtrar</label>
-				<select id="combined-filter">
-					<option value="All">Todos</option>
+				<select id="combined-filter" aria-label="Filtro de eventos" aria-description="Escolha de qual categoria exibir os eventos">
+					<option value="All">Escolha a categoria</option>
 				</select>
 			</div>
-			<div class="section" id="eventsContainer">
+			<div id="events-container">
 			</div>
-		</div>
-<!--		<div id="external">
-			<div class="grid-container">
-				<div>
-					<a href="https://www.instagram.com/onegociando" aria-label="Instagram">
-					<i class="fa-brands fa-instagram"></i><span aria-hidden="true" class="link-label">Instagram</span></a>
+			<div class="page-controls">
+				<div class="control">
+					<span class="arrow previous first"></span>
+					<span class="arrow previous second"></span>
 				</div>
-				<div>
-					<a href="https://www.youtube.com/@ProjetoAcolherAnima" aria-label="Youtube">
-					<i class="fa-brands fa-youtube"></i><span aria-hidden="true" class="link-label">YouTube</span></a>
-				</div>
-				<div>
-					<a href="https://linktr.ee/acolhimento_onegociando" aria-label="Links úteis">
-					<i class="fa-solid fa-link"></i><span aria-hidden="true" class="link-label">Links Úteis</span></a>
-				</div>
-				<div>
-					<a href="https://acolher-negociando.github.io/faq" aria-label="Dúvidas Frequentes">
-					<i class="fa-solid fa-lightbulb"></i><span aria-hidden="true" class="link-label">FAQ</span></a>
+				<div class="control">
+					<span class="arrow next first"></span>
+					<span class="arrow next second"></span>
 				</div>
 			</div>
-		</div>
-		<footer class="grid-container">
-			<div class="logo" id="acolher"></div>
-			<div>
-				<p>Todas as palestras são gratuitas e ocorrem às terças e quintas de noite e aos sábados de manhã. São realizadas via Zoom, podendo ser acessadas pelo aplicativo ou direto do seu navegador.</p>
-				<p><strong>Importante</strong>: clicando em acessar, você será direcionado à página do evento na plataforma Sympla. O registro é necessário para que receba o convite e, em alguns dias após a palestra, seu certificado.</p>
-			</div>
-			<div class="logo" id="negociando"></div>
-		</footer>-->
-
+		</main>
 		<div class="bg"></div>
+		<script src="js/headerCarousel.js" defer></script>
 		<script src="js/cardGenerator.js"></script>
 		<script src="js/cardInfo.js"></script>
 		<script src="js/monthFormat.js"></script>
-		<script src="https://kit.fontawesome.com/655ee7dcb1.js" crossorigin="anonymous" defer></script>
 	</body>
 </html>
