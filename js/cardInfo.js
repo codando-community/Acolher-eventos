@@ -1,98 +1,73 @@
 // Fill out cards built by cardGenerator.js
-var container = document.getElementById("eventsContainer");
+var container = document.getElementById("events-container");
 generateEvent(
 	container,
-	"2024-06-20",
-	"Desafiando o Óbvio: A Psicologia Reversa na Liderança",
-	"Hanz Chucrute, renomado psicólogo organizacional, mergulhará nas profundezas da psicologia reversa aplicada à liderança. Contrariando a lógica convencional, Chucrute desvendará os segredos por trás do poder da inversão de perspectiva na gestão de equipes e projetos.",
-	"#",
-	"#",
-	["Psicologia"],
-	"Desembolando"
+	"2024-06-28",
+	"Liderança em Gestão de Projetos",
+	"Patrícia Balla, engenheira de petróleo e líder de Engenharia de Processos na Shell com vasta experiência na indústria de exploração e produção, irá discutir os maiores desafios enfrentados por jovens profissionais em cargos de liderança, bem como as oportunidades de crescimento e desenvolvimento profissional. Abordando a singularidade desta indústria dominada pelo setor masculino, irá destacar a importância da diversidade de gênero e a contribuição única que as mulheres trazem para o setor.",
+	"https://www.sympla.com.br/evento-online/lideranca-em-gestao-de-projetos/2431759",
+	"https://animaeducacao.zoom.us/rec/share/424f6kqENH9_UFHYSQqFHZ3NlkEUQeZG19MXGdhk-EhAdDNekdQS1oE_n5vwpsnR.8Alocgj6n5auBP0_",
+	["Liderança", "Gestão de Projetos"],
+	"Negociando"
 );
 generateEvent(
 	container,
-	"2024-05-26",
-	"A Filosofia Aplicada na Vida Moderna: Sabedoria Ancestral para Desafios Contemporâneos",
-	"Mestre Roshi, filósofo erudito e mentor espiritual, trará à tona a relevância da filosofia aplicada no contexto da vida moderna. Mestre Roshi, com sua vasta sabedoria e experiência, irá explorar como os ensinamentos filosóficos antigos podem ser adaptados e aplicados para resolver os desafios do dia a dia contemporâneo.",
-	"#",
-	"#",
+	"2024-06-22",
+	"Preparados ou Desafiados? Educação e Mercado de Trabalho",
+	"Marcos Toledo, autoridade nos campos da Educação e do Direito com vasta experiência acadêmica e prática, irá compartilhar insights valiosos sobre como navegar no mundo profissional, destacando a importância de uma educação relevante e adaptável em meio às exigências do mercado contemporâneo.",
+	"https://www.sympla.com.br/evento-online/preparados-ou-desafiados-educacao-e-o-mercado-de-trabalho/2425667",
+	"https://animaeducacao.zoom.us/rec/share/pQKH1VL7TNRMIXxTXX6pBEdMpKFKspiZQe7i84pMAqTKOVZszE9TnStMt1EFZuA.MKHeRUWGv4u85mSn",
 	["Filosofia"],
 	"Ensinando"
 );
 generateEvent(
 	container,
-	"2024-05-20",
-	"O Caminho da Serenidade: Lições de Vida e Sabedoria Ancestral",
-	"Mestre Oogway, abordará temas essenciais como a importância da aceitação, a arte de viver no presente e a compreensão do fluxo natural da vida. Ele ensinará como cultivar a serenidade em meio às adversidades e como encontrar força e sabedoria em tempos de incerteza.",
+	"2024-06-12",
+	"Os 5 Passos para se Tornar um Consultor em LGPD",
+	"Melissa Barrioni, Presidente da Comissão de Proteção de Dados da OAB/MG no triênio 2022/2024 e Membro Consultora do Conselho Federal da OAB Nacional, irá proporcionar uma oportunidade única de aprendizado com uma das autoridades de destaque do país na área da proteção de dados, e dar os primeiros passos rumo a uma carreira como consultor em LGPD.",
 	"https://www.sympla.com.br/evento-online/os-5-passos-para-se-tornar-um-consultor-em-lgpd/2425653",
 	"https://animaeducacao.zoom.us/rec/share/-WdN3Aj8oiLmuzMxWOcFBjNJaEj_HNEKMhslAHEBuUOgWLDySakJXOAL0VH4KEqe.E_8ULXl77vSLhN8q",
-	["Gestão de Projetos"],
-	"Acolher"
+	["LGPD", "Consultoria"],
+	"Codando"
 );
 generateEvent(
-    container,
-    "2024-06-10",
-    "Explorando a Jornada Interior: Encontrando Equilíbrio e Paz de Espírito",
-    "Nome Sobrenome, guiará uma jornada de autoconhecimento, explorando técnicas ancestrais para alcançar equilíbrio emocional e paz de espírito. Descubra como harmonizar mente, corpo e espírito para uma vida mais plena e satisfatória.",
-    "https://www.sympla.com.br/explorando-a-jornada-interior-encontrando-equilibrio-e-paz-de-espirito/2567890",
-    "https://animaeducacao.zoom.us/rec/share/-WdN3Aj8oiLmuzMxWOcFBjNJaEj_HNEKMhslAHEBuUOgWLDySakJXOAL0VH4KEqe.E_8ULXl77vSLhN8q",
-    ["Autoconhecimento", "Equilíbrio Emocional"],
-    "Acolher"
+	container,
+	"2024-05-29",
+	"Capacitismo",
+	"Karoline Quaresma, presidente da Associação Conquistense de Integração do Deficiente a Cid., integrante da Clínica Jurídica de Direitos Humanos e militante pela causa dos direitos da pessoa com deficiência, irá discutir a discriminação e preconceito contra pessoas com deficiência, abordando como limitam oportunidades, perpetuam estereótipos e impactam a inclusão social. Destacará a importância de combater o capacitismo para uma sociedade mais justa e inclusiva.",
+	"https://www.sympla.com.br/evento-online/evento-capacitismo/2444306",
+	"#",
+	["Capacitismo", "Autoconhecimento"],
+	"Desembolando"
 );
-
 generateEvent(
-    container,
-    "2024-06-25",
-    "Os Segredos da Resiliência: Fortalecendo-se Diante das Adversidades",
-    "Nome Sobrenome, compartilhará insights poderosos sobre como desenvolver resiliência e enfrentar desafios com coragem e determinação. Descubra como transformar obstáculos em oportunidades de crescimento e fortalecimento pessoal.",
-    "https://www.sympla.com.br/os-segredos-da-resiliencia-fortalecendo-se-diante-das-adversidades/2678901",
-    "https://animaeducacao.zoom.us/rec/share/-WdN3Aj8oiLmuzMxWOcFBjNJaEj_HNEKMhslAHEBuUOgWLDySakJXOAL0VH4KEqe.E_8ULXl77vSLhN8q",
-    ["Resiliência", "Desenvolvimento Pessoal"],
-    "Acolher"
+	container,
+	"2024-04-27",
+	"Transformando seu LinkedIn em um Ímã para Recrutadores",
+	"Samara Souza, especialista em Recursos Humanos com experiência em Recrutamento & Seleção e consultoria de carreira, irá compartilhar suas dicas exclusivas e estratégias para tornar seu perfil no LinkedIn verdadeiramente memorável e atraente para os recrutadores.",
+	"https://www.sympla.com.br/evento-online/transformando-seu-linkedin-em-um-ima-para-recrutadores/2425446",
+	"https://animaeducacao.zoom.us/rec/share/CXP0uHtJQ6NO7SpXl1VsmiGnewdm32zrwRxp2bfdeTAWZdyTCZ2lKQ_vXKqNytde.X_Eg4nlnVUkJTfOb",
+	["LinkedIn", "Networking"],
+	"Comunicando"
 );
-
 generateEvent(
-    container,
-    "2024-05-05",
-    "Desvendando a Sabedoria Interior: Ensinamentos para uma Vida Plena",
-    "Nome Sobrenome, conduzirá uma jornada de descoberta interior, revelando ensinamentos milenares para uma vida plena e significativa. Aprenda a cultivar a sabedoria interna e aplicá-la em todas as áreas da sua vida.",
-    "https://www.sympla.com.br/desvendando-a-sabedoria-interior-ensinamentos-para-uma-vida-plena/2790123",
-    "https://animaeducacao.zoom.us/rec/share/-WdN3Aj8oiLmuzMxWOcFBjNJaEj_HNEKMhslAHEBuUOgWLDySakJXOAL0VH4KEqe.E_8ULXl77vSLhN8q",
-    ["Sabedoria Interior", "Desenvolvimento Espiritual"],
-    "Acolher"
+	container,
+	"2024-04-20",
+	"Definição e Evolução do Empreendedorismo",
+	"Abdel Hach, coordenador da Equipe de Conformidade Regulatória na Ecorys Soluções Empresariais com extensa experiência em engenharia geotécnica e compliance empresarial, irá explorar o mundo do empreendedorismo sob a perspectiva de sua definição, evolução e impacto global, oferecendo insights profundos sobre os diversos aspectos do empreendedorismo, desde os diferentes tipos e processos até a inovação, gestão de riscos e responsabilidade social.",
+	"https://www.sympla.com.br/evento-online/definicao-e-evolucao-do-empreendedorismo/2424889",
+	"https://animaeducacao.zoom.us/rec/share/mNm_mqWejdl3MPPEb-kLLCM4LeoVJFIWblErFtBQ7sokwTAqUCjxeUTapjgY1F1B.xk13pbR9EYhTCYP5",
+	["Empreendedorismo", "Desenvolvimento Profissional"],
+	"Endireitando"
 );
-
 generateEvent(
-    container,
-    "2024-07-15",
-    "Navegando os Mares da Mudança: Adaptando-se às Transformações da Vida",
-    "Nome Sobrenome, oferecerá insights valiosos sobre como navegar pelas mudanças da vida com graça e resiliência. Descubra como se adaptar às transformações inevitáveis e encontrar oportunidades de crescimento em meio à mudança.",
-    "https://www.sympla.com.br/navegando-os-mares-da-mudanca-adaptando-se-as-transformacoes-da-vida/2893567",
-    "https://animaeducacao.zoom.us/rec/share/-WdN3Aj8oiLmuzMxWOcFBjNJaEj_HNEKMhslAHEBuUOgWLDySakJXOAL0VH4KEqe.E_8ULXl77vSLhN8q",
-    ["Adaptação", "Mudança"],
-    "Acolher"
-);
-
-generateEvent(
-    container,
-    "2024-02-02",
-    "A Arte da Aceitação: Transformando Desafios em Oportunidades",
-    "Nome Sobrenome, conduzirá uma reflexão profunda sobre a importância da aceitação na jornada da vida. Aprenda a transformar desafios em oportunidades de crescimento e a cultivar uma mentalidade de aceitação e gratidão.",
-    "https://www.sympla.com.br/a-arte-da-aceitacao-transformando-desafios-em-oportunidades/2987456",
-    "https://animaeducacao.zoom.us/rec/share/-WdN3Aj8oiLmuzMxWOcFBjNJaEj_HNEKMhslAHEBuUOgWLDySakJXOAL0VH4KEqe.E_8ULXl77vSLhN8q",
-    ["Aceitação", "Gratidão"],
-    "Acolher"
-);
-
-generateEvent(
-    container,
-    "2024-04-22",
-    "Despertando a Consciência: Rumo a uma Vida de Plenitude e Realização",
-    "Nome Sobrenome, compartilhará insights profundos sobre como despertar a consciência e viver uma vida de plenitude e realização. Descubra práticas para expandir sua consciência e alcançar seu potencial máximo.",
-    "https://www.sympla.com.br/despertando-a-consciencia-rumo-a-uma-vida-de-plenitude-e-realizacao/3098754",
-    "https://animaeducacao.zoom.us/rec/share/-WdN3Aj8oiLmuzMxWOcFBjNJaEj_HNEKMhslAHEBuUOgWLDySakJXOAL0VH4KEqe.E_8ULXl77vSLhN8q",
-    ["Consciência", "Realização Pessoal"],
-    "Acolher"
+	container,
+	"2024-04-04",
+	"Planejamento Financeiro Pessoal de Forma Prática",
+	"Jade Gomes, renomada especialista em planejamento financeiro pessoal e investimentos, irá compartilhar seus insights valiosos sobre como descomplicar o processo de planejamento financeiro pessoal em apenas alguns passos.",
+	"https://www.sympla.com.br/evento-online/descomplicando-o-planejamento-financeiro-pessoal-em-poucos-passos/2397857",
+	"https://animaeducacao.zoom.us/rec/share/0bFPZU-ssqLhIF7Fwpg_6NInfE585d7GVB8nKgae9BOB2-e-Ac-H9fprM6bS8UaV.yyLOYg9JkX1kOa7B",
+	["Finanças", "Planejamento"],
+	"Veterinando"
 );
 populateComboBox(container);

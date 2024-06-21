@@ -18,7 +18,7 @@ function replaceMonth() {
 				monthElement.textContent = "Abr";
 				break;
 			case "05":
-				monthElement.textContent = "Mai";
+				monthElement.textContent = "Maio";	// Has no abbreviation
 				break;
 			case "06":
 				monthElement.textContent = "Jun";
