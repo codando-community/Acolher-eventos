@@ -1,43 +1,23 @@
-.acolher{
-	--theme: green;
+/* ---- Gerúndios ---- */
+.acolher {			--theme: green;
 }
-
-.codando {
-	--theme: indianred;
+.codando {			--theme: indianred;
 }
-
-.comunicando {
-	--theme: mediumorchid;
+.comunicando {		--theme: mediumorchid;
 }
-
-.cuidando {
-	--theme: khaki;
+.cuidando {			--theme: khaki;
 }
-
-.desembolando {
-	--theme: darkorange;
+.desembolando {		--theme: darkorange;
 }
-
-.endireitando {
-	--theme: black;
+.endireitando {		--theme: black;
 }
-
-.engenheirando {
-	--theme: midnightblue;
+.engenheirando {	--theme: midnightblue;
 }
-
-.ensinando {
-	--theme: steelblue;
+.ensinando {		--theme: steelblue;
 }
-
-.negociando {
-	--theme: navy;
+.negociando {		--theme: navy;
 }
-
-.projetando {
-	--theme: magenta;
+.projetando {		--theme: magenta;
 }
-
-.veterinando {
-	--theme: seagreen;
+.veterinando {		--theme: seagreen;
 }

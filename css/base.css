@@ -1,0 +1,341 @@
+@font-face {
+	font-family: "Monoton";
+	src:
+		local("Monoton"),
+		url(../font/Monoton-Regular.ttf);
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Rubik";
+	src:
+		local("Rubik"),
+		url(../font/Rubik-VariableFont_wght.ttf);
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: "Rubik";
+	src:
+		local("Rubik"),
+		url(../font/Rubik-VariableFont_wght.ttf);
+	font-weight: bold;
+}
+
+:root {
+	--accent-dark: #0c002b;
+	--accent-light: dodgerblue;
+}
+
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	font-size: 10px;
+}
+
+body {
+	background: radial-gradient(ellipse at 50% 0%, navy 0%, black 66%);
+	color: white;
+	font-family: Rubik, system-ui, sans-serif;
+	font-weight: 400;
+	font-size: 1.6rem;
+}
+
+*,
+::before,
+::after {
+	box-sizing: inherit;
+}
+
+
+/* ---- Spacing ---- */
+:root {
+	--space-base:				1em;
+	--space-xxxs:				calc(0.25 * var(--space-base));
+	--space-xxs:				calc(0.375 * var(--space-base));
+	--space-xs:					calc(0.5 * var(--space-base));
+	--space-sm:					calc(0.75 * var(--space-base));
+	--space-md:					calc(1.25 * var(--space-base));
+	--space-lg:					calc(2 * var(--space-base));
+	--space-xl:					calc(3.25 * var(--space-base));
+	--space-xxl:				calc(5.25 * var(--space-base));
+	--space-xxxl:				calc(8.5 * var(--space-base));
+
+	--component-padding:		var(--space-sm);
+}
+
+.margin-top,
+.margin-top--md {
+	margin-top: var(--space-md);
+}
+
+.margin-top--sm {
+	margin-top: var(--space-sm);
+}
+
+.margin-top--lg {
+	margin-top: var(--space-lg);
+}
+
+.margin-top--xl {
+	margin-top: var(--space-xl);
+}
+
+.margin-top--xxl {
+	margin-top: var(--space-xxl);
+}
+
+.margin-bottom,
+.margin-bottom--md {
+	margin-bottom: var(--space-md);
+}
+
+.margin-bottom--sm {
+	margin-bottom: var(--space-sm);
+}
+
+.margin-bottom--lg {
+	margin-bottom: var(--space-lg);
+}
+
+.margin-bottom--xl {
+	margin-bottom: var(--space-xl);
+}
+
+.margin-bottom--xxl {
+	margin-bottom: var(--space-xxl);
+}
+
+@media (width >= 800px) {
+	:root {
+		--space-base:			1.25em;
+		--component-padding:	var(--space-md);
+	}
+
+	.margin-top,
+	.margin-top--md {
+		margin-top: var(--space-lg);
+	}
+	
+	.margin-top--sm {
+		margin-top: var(--space-md);
+	}
+	
+	.margin-top--lg {
+		margin-top: var(--space-xl);
+	}
+	
+	.margin-top--xl {
+		margin-top: var(--space-xxl);
+	}
+	
+	.margin-top--xxl {
+		margin-top: var(--space-xxxl);
+	}
+
+	.margin-bottom,
+	.margin-bottom--md {
+		margin-bottom: var(--space-lg);
+	}
+	
+	.margin-bottom--sm {
+		margin-bottom: var(--space-md);
+	}
+	
+	.margin-bottom--lg {
+		margin-bottom: var(--space-xl);
+	}
+	
+	.margin-bottom--xl {
+		margin-bottom: var(--space-xxl);
+	}
+	
+	.margin-bottom--xxl {
+		margin-bottom: var(--space-xxxl);
+	}
+}
+
+
+/* ---- Header ---- */
+.header {
+	grid-area: header;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.header-text {
+	margin: 1rem 0;
+	color: cornflowerblue;
+	font-weight: bold;
+	font-size: clamp(5rem, 8vw + 2rem, 8rem);
+	font-family: Monoton, sans-serif;
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow:
+		0 0 20px blue,
+		0 0 50px blue,
+		0 0 100px blue,
+		0 0 200px blue;
+	cursor: default;
+	animation: flicker 5s infinite alternate;
+}
+
+@keyframes flicker {
+	44%, 46%, 98%, 100% {
+		opacity: 1;
+	}
+	45%, 99% {
+		opacity: 0.7;
+	}
+}
+
+@media (width >= 1024px) {
+	#carousel {
+		animation: swipeLeft 3s ease-out infinite;
+	}
+
+	@keyframes swipeLeft {
+		0%, 30%, 100% {
+			opacity: 1;
+			transform: translateX(0);
+		}
+		14% {
+			opacity: 0;
+			transform: translateX(-20%);
+		}
+		15% {
+			opacity: 0;
+			transform: translateX(20%);
+		}
+		31% {
+			color: cornflowerblue;
+		}
+		32% {
+			color: gainsboro;
+			transform: scale(1.01);
+		}
+		50% {
+			color: cornflowerblue;
+			transform: scale(1);
+		}
+	}
+}
+
+
+/* ---- Page controls ---- */
+.page-controls {
+	grid-area: pages;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.control {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin-inline: 1rem;
+	border: 2px solid white;
+	border-radius: 100%;
+	cursor: pointer;
+}
+
+.arrow {
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	margin-left: -10px;
+	background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
+	transform: translateX(3px);
+}
+
+.second {
+	margin-left: 6px;
+}
+
+.previous {
+	transform: rotate(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {	/* ensure mouse state isn't triggered [mobile] */
+	.control:active {
+		transform: scale(0.95);
+	}
+
+	.control:hover > .previous {
+		animation: bounceLeft 1.4s linear infinite;
+	}
+
+	.control:hover > .previous.second {
+		animation: bounceLeft 1.4s 0.2s linear infinite;
+	}
+
+	.control:hover > .next {
+		animation: bounceRight 1.4s linear infinite;
+	}
+
+	.control:hover > .next.first {
+		animation: bounceRight 1.4s 0.2s linear infinite;
+	}
+
+	@keyframes bounceLeft {
+		0% {
+			opacity: 1;
+			transform: translateX(0) scale(-1);
+		}
+		25% {
+			opacity: 0;
+			transform: translateX(-10px) scale(-0.9);
+		}
+		26% {
+			opacity: 0;
+			transform: translateX(10px) scale(-0.9);
+		}
+		55% {
+			opacity: 1;
+			transform: translateX(0) scale(-1);
+		}
+	}
+
+	@keyframes bounceRight {
+		0% {
+			opacity: 1;
+			transform: translateX(3px) scale(1);
+		}
+		25% {
+			opacity: 0;
+			transform: translateX(10px) scale(0.9);
+		}
+		26% {
+			opacity: 0;
+			transform: translateX(-10px) scale(0.9);
+		}
+		55% {
+			opacity: 1;
+			transform: translateX(3px) scale(1);
+		}
+	}
+}
+
+
+/* ---- Background ---- */
+.bg {
+	display: none;
+}
+
+@media (width >= 1024px) {
+	.bg {
+		display: block;
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		width: 100vw;
+		height: 100vh;
+		background: url(../img/theater.jpg) no-repeat center / cover;
+		opacity: 0.3;
+	}
+}
