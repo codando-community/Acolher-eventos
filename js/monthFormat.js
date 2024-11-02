@@ -1,50 +1,13 @@
 // Replace month numbers with their abbreviations
 function replaceMonth() {
-	var monthElements = document.body.querySelectorAll(".card-month");
+	const monthElements = document.body.querySelectorAll(".card-month");
+	const monthAbbreviations = ["Jan", "Fev", "Mar", "Abr", "Maio", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
-	monthElements.forEach(function(monthElement) {
-		var month = monthElement.textContent.trim().toLowerCase();
-		switch (month) {
-			case "01":
-				monthElement.textContent = "Jan";
-				break;
-			case "02":
-				monthElement.textContent = "Fev";
-				break;
-			case "03":
-				monthElement.textContent = "Mar";
-				break;
-			case "04":
-				monthElement.textContent = "Abr";
-				break;
-			case "05":
-				monthElement.textContent = "Mai";
-				break;
-			case "06":
-				monthElement.textContent = "Jun";
-				break;
-			case "07":
-				monthElement.textContent = "Jul";
-				break;
-			case "08":
-				monthElement.textContent = "Ago";
-				break;
-			case "09":
-				monthElement.textContent = "Set";
-				break;
-			case "10":
-				monthElement.textContent = "Out";
-				break;
-			case "11":
-				monthElement.textContent = "Nov";
-				break;
-			case "12":
-				monthElement.textContent = "Dez";
-				break;
-			default:
-				console.error("Error: Invalid month abbreviation - ", month);
-				break;
-		}
+	monthElements.forEach(monthElement => {
+		const month = monthElement.textContent.trim();
+		const monthIndex = parseInt(month, 10) - 1; // Convert to zero-based index
+
+		monthElement.textContent = monthAbbreviations[monthIndex]?? "ERRO"; // Invalid entry fallback
 	});
 }
 

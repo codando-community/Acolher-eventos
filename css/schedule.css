@@ -1,0 +1,304 @@
+:root {
+	--row-gap: 2rem;
+	--summ-height: 3;	/* unitless */
+}
+
+main {
+	display: grid;
+	grid-template-areas:
+		"header"		/* css/base */
+		"filter"
+		"events"
+		"pages";		/* css/base */
+	grid-template-rows:
+		min(70vw, 35rem)
+		calc(var(--row-gap) + 25px)
+		1fr
+		calc(var(--row-gap) * 5);
+	grid-auto-columns: minmax(0, min(90ch, 100vw - 4rem));
+	justify-content: center;
+}
+
+.filter-container {
+	grid-area: filter;
+	justify-self: end;
+}
+
+#events-container {
+	grid-area: events;
+}
+
+
+/* ---- Card ---- */
+.card-row {
+	display: flex;
+}
+
+.card-date {
+	display: flex;
+	flex-direction: row;
+	position: absolute;	/* remove from document flow so card-main fills vw */
+	z-index: 1;			/* prevent overlapping by the card if current event */
+	min-width: 8%;
+	padding: 2rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 1.3;
+	pointer-events: none;
+}
+
+.card-day,
+.card-month {
+	font-size: 3rem;
+}
+
+.card-month {
+	margin-left: 1rem;
+}
+
+.card-row:not(:last-of-type) > .card-main {
+	margin-bottom: 2rem;
+}
+
+.card-main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-top: 8rem;
+	background-color: rgb(30 30 30 / 0.6);
+}
+
+.card-info {
+	grid-area: info;
+	padding: 2rem 2rem 2rem 3rem;
+	pointer-events: none;
+}
+
+.card-aside {
+	grid-area: side;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	padding-bottom: 3rem;
+}
+
+.card-button {
+	background-color: var(--accent-light);
+	border: none;
+	border-radius: 999px;
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+	pointer-events: auto;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+@media (hover: hover) and (pointer: fine) {	/* ensure mouse state isn't triggered [mobile] */
+	.card-button:hover {
+		background-color: lch(from var(--accent-light) calc(l - 20) c h);
+		color: white;
+	}
+
+	.card-button:active {
+		outline: 0;
+		transform: scale(0.95);
+	}
+}
+
+@media (width >= 800px) {
+	.card-date {
+		flex-direction: column;
+		align-items: center;
+		position: static;
+		padding: 0;
+	}
+	.card-month {
+		margin: 0;
+		font-size: inherit;
+	}
+	.card-main {
+		flex-wrap: nowrap;
+		justify-content: center;
+		padding: 0;
+	}
+	.card-aside {
+		padding: 2rem;
+	}
+}
+
+
+/* ---- Info ---- */
+.card-title {
+	margin-block: 1rem;
+	font-weight: bold;
+	font-size: clamp(1.6rem, 2rem, 3rem);
+	text-align: center;
+	text-wrap: balance;
+	line-height: 1.3;
+	word-break: break-word;
+	hyphens: auto;
+}
+
+.card-summary {
+	display: flex;
+	flex-direction: column;
+}
+
+.summary-text {
+	display: -webkit-box;
+	-webkit-line-clamp: var(--summ-height);
+	-webkit-box-orient: vertical;
+	line-height: calc(2px + 2ex + 2px);
+	overflow: hidden;
+	transition: -webkit-line-clamp 0.5s;
+}
+
+.summary-expand {
+	align-self: flex-end;
+	margin-bottom: 1rem;	/* set here so it's not added when the button is disabled */
+	padding: 1rem;
+	font-size: 1.2rem;
+}
+
+.card-tags {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.tag {	/* individual themes at css/tags */
+	width: fit-content;
+	margin: 5px 10px;
+	padding: 0.5rem 1rem;
+	background: linear-gradient(var(--theme), color-mix(in srgb, var(--theme), black 70%));
+	border-radius: 999px;
+	font-weight: bold;
+	font-size: 1.2rem;
+	pointer-events: none;
+}
+
+@media (width >= 800px) {
+	.card-title {
+		text-align: left;
+		text-wrap: wrap;
+	}
+	.summary-expand {
+		padding: 0.5rem 1rem;
+	}
+}
+
+
+/* ---- Aside ---- */
+.portrait {
+	display: none;
+}
+
+.card-aside > .card-button {
+	padding: 1.6rem 3.2rem;
+}
+
+@media (width >= 800px) {
+	.portrait {
+		display: block;
+		width: 120px;
+		height: 120px;
+		background: #ccc center 20%/120px no-repeat;
+		border: 2px solid var(--accent-light);
+		border-radius: 50%;
+	}
+}
+
+
+/* ---- Finished event ---- */
+.finished-event :is(.card-date, .card-info) * {
+	opacity: 0.5;
+}
+
+.finished-event :is(.tag, .portrait) {
+	--theme: gray;	/* workaround to mitigate color-mix() tint */
+	filter: grayscale(100%);
+}
+
+:where(.finished-event) .card-button {
+	background-color: #aaa;
+}
+
+
+/* ---- Current event ---- */
+.current-event {
+	overflow: hidden;
+	transform: translate(0%);
+}
+
+.current-event > span {
+	position: absolute;
+}
+
+.current-event > .animRight {
+	inset: 0 auto auto 0;
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(to right, var(--accent-dark), var(--accent-light));
+	animation: animRight 2s linear infinite;
+}
+
+@keyframes animRight {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(100%);
+	}
+}
+
+.current-event > .animBottom {
+	inset: 0 0 auto auto;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(to bottom, var(--accent-dark), var(--accent-light));
+	animation: animBottom 2s linear 1s infinite;
+}
+
+@keyframes animBottom {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(100%);
+	}
+}
+
+.current-event > .animLeft {
+	inset: auto 0 0 auto;
+	width: 100%;
+	height: 2px;
+	background: linear-gradient(to left, var(--accent-dark), var(--accent-light));
+	animation: animLeft 2s linear infinite;
+}
+
+@keyframes animLeft {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+.current-event > .animTop {
+	inset: auto auto 0 0;
+	width: 2px;
+	height: 100%;
+	background: linear-gradient(to top, var(--accent-dark), var(--accent-light));
+	animation: animTop 2s linear 1s infinite;
+}
+
+@keyframes animTop {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateY(-100%);
+	}
+}
