@@ -1,4 +1,4 @@
-// At large viewports, switch subheading from a list, making sure it's shuffled and goes through all before repeating
+// At large viewports, switch subheading from a shuffled list and go through all before restarting
 const headerCarousel = document.getElementById("carousel");
 const list = ["Acolher", "Codando", "Comunicando", "Cuidando", "Desembolando", "Endireitando", "Engenheirando", "Ensinando", "Negociando", "Projetando", "Veterinando"];
 let intervalId = null;

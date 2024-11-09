@@ -106,7 +106,7 @@ function createTagDiv(tags, gerundio) {
 	return tagDiv;
 }
 
-// Set portrait image path by matching filename with the guest name and surname extracted from the card summary beginning
+// Set portrait image path by matching filename with guest name and surname extracted from the card summary beginning
 // E.g. "John Doe, renowned professor at..." => Path must be "img/portrait/john_doe"
 // File extension must be .jpeg
 function createPortrait(summary) {
