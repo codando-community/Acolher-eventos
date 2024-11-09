@@ -6,38 +6,38 @@
 		<meta name="author" content="Gabriel Lacerda, Rafael Vaz">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
-			@import url(css/normalize.css) layer(reset);
+			@import url(css/normalize.css) layer(normalize);
 			@import url(css/base.css) layer(base);
+			@import url(css/schedule.css) layer(schedule);
+			@import url(css/tags.css) layer(schedule);
 		</style>
-		<link rel="stylesheet" href="css/schedule.css">
-		<link rel="stylesheet" href="css/tags.css">
 		<title>Eventos - Acolher</title>
 	</head>
 	<body>
 		<main>
-			<div class="header">
-			<h1 class="header-text">Eventos</h1>
-			<h1 class="header-text" id="carousel">Acolher</h1>
+			<div id="header">
+				<h1 class="header-text">Eventos</h1>
+				<h1 class="header-text" id="carousel">Acolher</h1>
 			</div>
-			<div class="filter-container">
+			<div id="filter-container">
 				<select id="combined-filter" aria-label="Filtro de eventos" aria-description="Escolha de qual categoria exibir os eventos">
 					<option value="All">Escolha a categoria</option>
 				</select>
 			</div>
 			<div id="events-container">
 			</div>
-			<div class="page-controls">
+			<div id="page-controls">
 				<div class="control">
-					<span class="arrow previous first"></span>
-					<span class="arrow previous second"></span>
+					<span class="chevron previous first"></span>
+					<span class="chevron previous second"></span>
 				</div>
 				<div class="control">
-					<span class="arrow next first"></span>
-					<span class="arrow next second"></span>
+					<span class="chevron next first"></span>
+					<span class="chevron next second"></span>
 				</div>
 			</div>
 		</main>
-		<div class="bg"></div>
+		<div id="bg"></div>
 		<script src="js/headerCarousel.js" defer></script>
 		<script src="js/cardGenerator.js"></script>
 		<script src="js/cardInfo.js"></script>

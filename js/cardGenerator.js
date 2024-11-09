@@ -11,11 +11,8 @@ function generateEvent(container, date, title, summary, eventLink, recordingLink
 	hiddenDate.value = date;
 	cardRow.appendChild(hiddenDate);
 
-	// Card date
+	// Card date and card main content
 	const cardDate = createCardDate(date);
-	cardRow.appendChild(cardDate);
-
-	// Card main content
 	const cardMain = createElementWithClasses("div", "card-main");
 	appendAnimations(cardMain);
 
@@ -35,11 +32,10 @@ function generateEvent(container, date, title, summary, eventLink, recordingLink
 	// Add event class by date
 	styleEventByDate(cardRow, cardMain, date);
 
-	// Append main content to row
+	// Append content to row and insert event in container
+	cardRow.appendChild(cardDate);
 	cardRow.appendChild(cardMain);
-
-	// Insert event in container
-	insertEventInOrder(container, cardRow, new Date(date).setUTCHours(0, 0, 0, 0));
+	insertEventInOrder(container, cardRow, new Date(date));
 }
 
 function createElementWithClasses(tag, ...classes) {
@@ -52,27 +48,31 @@ function createElementWithClasses(tag, ...classes) {
 function createCardDate(date) {
 	const cardDate = createElementWithClasses("div", "card-date");
 
-	const dateDay = createElementWithClasses("div", "card-day");
-	dateDay.textContent = date.split("-")[2];
-	cardDate.appendChild(dateDay);
+	// Extract day and month
+	const [year, month, day] = date.split("-");
 
-	const dateTextDiv = createElementWithClasses("div", "card-month");
-	dateTextDiv.textContent = date.split("-")[1];
-	cardDate.appendChild(dateTextDiv);
+	const dayElement = createElementWithClasses("div", "card-day");
+	dayElement.textContent = day;
+	cardDate.appendChild(dayElement);
+
+	const monthElement = createElementWithClasses("div", "card-month");
+	monthElement.textContent = month;
+	cardDate.appendChild(monthElement);
 
 	return cardDate;
 }
 
 function appendAnimations(container) {
-	const animations = ["animRight", "animBottom", "animLeft", "animTop"];
-	animations.forEach(anim => {
-		const span = createElementWithClasses("span", anim);
-		container.appendChild(span);
+	const fragment = document.createDocumentFragment();
+	["animRight", "animBottom", "animLeft", "animTop"].forEach(anim => {
+		// Minimize reflows by appending all spans to a temporary container first
+		fragment.appendChild(createElementWithClasses("span", anim));
 	});
+	container.appendChild(fragment);
 }
 
 function createCardTitle(title) {
-	const cardTitle = createElementWithClasses("h3", "card-title");
+	const cardTitle = createElementWithClasses("h2", "card-title");
 	cardTitle.textContent = title;
 
 	return cardTitle;
@@ -80,19 +80,17 @@ function createCardTitle(title) {
 
 function createCardSummary(summary) {
 	const cardSummary = createElementWithClasses("div", "card-summary");
-
 	const summaryText = createElementWithClasses("p", "summary-text");
 	summaryText.textContent = summary;
-	cardSummary.appendChild(summaryText);
 
 	const summaryExpand = createElementWithClasses("button", "card-button", "summary-expand");
 	summaryExpand.textContent = "Ler mais";
-	cardSummary.appendChild(summaryExpand);
-
-	summaryExpand.onclick = function() {
+	summaryExpand.onclick = () => {
 		summaryText.style.webkitLineClamp = "none";
-		summaryExpand.style.display = "none";
-	}
+		summaryExpand.style.visibility = "hidden";
+	};
+	cardSummary.appendChild(summaryText);
+	cardSummary.appendChild(summaryExpand);
 
 	return cardSummary;
 }
@@ -108,47 +106,56 @@ function createTagDiv(tags, gerundio) {
 	return tagDiv;
 }
 
-// Set portrait image path by matching filename with guest name and surname extracted from the card summary
+// Set portrait image path by matching filename with the guest name and surname extracted from the card summary beginning
 // E.g. "John Doe, renowned professor at..." => Path must be "img/portrait/john_doe"
 // File extension must be .jpeg
 function createPortrait(summary) {
-	const portrait = createElementWithClasses("div", "portrait");
+	// Remove accents from guest name
+	function removeDiacritics(str) {
+		return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+	}
 
-	const guestName = removeDiacritics(summary.split(/[ ,]/).slice(0, 2).join("_")).toLowerCase();
+	const portrait = createElementWithClasses("div", "portrait");
+	const guestName = removeDiacritics(summary.split(/[\s,]+/).slice(0, 2).join("_")).toLowerCase();
 	portrait.style.backgroundImage = `url(img/portrait/${guestName}.jpeg)`;
 
 	return portrait;
 }
 
-function createLinkButton(date, eventLink, recordingLink) {
-	const linkButton = document.createElement("a");
-	const eventDate = new Date(date).setUTCHours(0, 0, 0, 0);
-	const currentDate = new Date().setUTCHours(-3, 0, 0, 0);
+function normalizeDate(date) {
+	let normalizedDate = new Date(date);
 
-	if (eventDate >= currentDate) {
-		linkButton.classList.add("card-button", "button-event");
-		linkButton.href = eventLink;
-		linkButton.textContent = "Acessar";
-	} else {
-		linkButton.classList.add("card-button", "button-recording");
-		linkButton.href = recordingLink;
-		linkButton.textContent = "Gravação";
+	// Check if string without time component
+	if (typeof date === "string" && !date.includes("T")) {
+		// Append time part to ensure local time parsing
+		normalizedDate = new Date(date + "T00:00:00");
 	}
+	normalizedDate.setHours(0, 0, 0, 0);
+
+	return normalizedDate;
+}
+
+function createLinkButton(date, eventLink, recordingLink) {
+	const eventDate = normalizeDate(date);
+	const currentDate = normalizeDate(new Date());
+
+	const linkButton = document.createElement("a");
+	const isEventUpcoming = eventDate >= currentDate;
+
+	linkButton.classList.add("card-button", isEventUpcoming ? "button-event" : "button-recording");
+	linkButton.href = isEventUpcoming ? eventLink : recordingLink;
+	linkButton.textContent = isEventUpcoming ? "Acessar" : "Gravação";
 
 	return linkButton;
 }
 
-function removeDiacritics(str) {
-	return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
 function styleEventByDate(cardRow, cardMain, date) {
-	const eventDate = new Date(date).setUTCHours(0, 0, 0, 0);
-	const currentDate = new Date().setUTCHours(-3, 0, 0, 0);
+	const eventDate = normalizeDate(date);
+	const currentDate = normalizeDate(new Date());
 
 	if (eventDate < currentDate) {
 		cardRow.classList.add("finished-event");
-	} else if (eventDate === currentDate) {
+	} else if (eventDate.getTime() === currentDate.getTime()) {
 		cardMain.classList.add("current-event");
 	}
 }
@@ -164,7 +171,7 @@ function insertEventInOrder(container, newEvent, newEventDate) {
 
 	for (let i = events.length - 1; i >= 0; i--) {
 		const currentEvent = events[i];
-		const currentEventDate = new Date(currentEvent.querySelector("input[type='hidden']").value).setUTCHours(0, 0, 0, 0);
+		const currentEventDate = new Date(currentEvent.querySelector("input[type='hidden']").value);
 
 		if (newEventDate < currentEventDate) {
 			container.insertBefore(newEvent, currentEvent.nextSibling);
@@ -172,64 +179,53 @@ function insertEventInOrder(container, newEvent, newEventDate) {
 			return;
 		}
 	}
-
 	container.insertBefore(newEvent, container.firstChild);
 }
 
 function populateComboBox(container) {
-	var events = container.querySelectorAll(".card-row");
-	var tagsSet = new Set();
-	var gerundioTagsSet = new Set();
+	const events = container.querySelectorAll(".card-row");
+	const tagsSet = new Set();
+	const gerundioTagsSet = new Set();
 
-	events.forEach(function(event) {
-		var tags = event.getAttribute("data-tags");
-		var gerundioTags = event.getAttribute("gerundio-tags");
+	events.forEach(event => {
+		const tags = event.getAttribute("data-tags");
+		const gerundioTags = event.getAttribute("gerundio-tags");
 
-		if (tags) {
-			tags.split(",").forEach(function(tag) {
-				tagsSet.add(tag.trim());
-			});
-		}
-
-		if (gerundioTags) {
-			gerundioTags.split(",").forEach(function(gerundioTag) {
-				gerundioTagsSet.add(gerundioTag.trim());
-			});
-		}
+		if (tags) tags.split(",").forEach(tag => tagsSet.add(tag.trim()));
+		if (gerundioTags) gerundioTags.split(",").forEach(tag => gerundioTagsSet.add(tag.trim()));
 	});
 
-	var combinedComboBox = document.getElementById("combined-filter");
+	// Populate combo box
+	const combinedComboBox = document.getElementById("combined-filter");
+	const tagsOptGroup = createOptGroup("Áreas", tagsSet);
+	const gerundioOptGroup = createOptGroup("Gerúndios", gerundioTagsSet);
 
-	var tagsOptGroup = document.createElement("optgroup");
-	tagsOptGroup.label = "Áreas";
-	tagsSet.forEach(function(tag) {
-		var option = document.createElement("option");
-		option.text = tag;
-		tagsOptGroup.appendChild(option);
-	});
-
-	var gerundioOptGroup = document.createElement("optgroup");
-	gerundioOptGroup.label = "Gerúndios";
-	gerundioTagsSet.forEach(function(gerundioTag) {
-		var option = document.createElement("option");
-		option.text = gerundioTag;
-		gerundioOptGroup.appendChild(option);
-	});
-
-	combinedComboBox.appendChild(gerundioOptGroup);
 	combinedComboBox.appendChild(tagsOptGroup);
+	combinedComboBox.appendChild(gerundioOptGroup);
+}
+
+function createOptGroup(label, tagsSet) {
+	const optGroup = document.createElement("optgroup");
+	optGroup.label = label;
+	tagsSet.forEach(tag => {
+		const option = document.createElement("option");
+		option.text = tag;
+		optGroup.appendChild(option);
+	});
+
+	return optGroup;
 }
 
 function filterEvents() {
-	var selectedValue = document.getElementById("combined-filter").value;
-	var events = document.querySelectorAll(".card");
+	const selectedValue = document.getElementById("combined-filter").value;
+	const events = document.querySelectorAll(".card");
 
-	events.forEach(function(event) {
-		var eventTags = event.getAttribute("data-tags").split(",");
-		var eventGerundioTags = event.getAttribute("gerundio-tags").split(",");
+	// Display events based on selected filter
+	events.forEach(event => {
+		const eventTags = event.getAttribute("data-tags").split(",");
+		const eventGerundioTags = event.getAttribute("gerundio-tags").split(",");
 
-		var displayEvent = (eventTags.includes(selectedValue) || eventGerundioTags.includes(selectedValue) || selectedValue === "All");
-
+		const displayEvent = (eventTags.includes(selectedValue) || eventGerundioTags.includes(selectedValue) || selectedValue === "All");
 		event.style.display = displayEvent ? "flex" : "none";
 	});
 }

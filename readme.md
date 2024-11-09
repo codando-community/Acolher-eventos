@@ -30,6 +30,7 @@ Site agregador dos eventos realizados por todos os gerúndios do projeto Acolher
 ├── js/
 │   ├── cardGenerator
 │   ├── cardInfo
+│   ├── headerCarousel
 │   └── monthFormat
 ├── index
 └── readme

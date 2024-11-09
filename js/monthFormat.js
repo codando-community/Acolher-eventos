@@ -5,9 +5,11 @@ function replaceMonth() {
 
 	monthElements.forEach(monthElement => {
 		const month = monthElement.textContent.trim();
-		const monthIndex = parseInt(month, 10) - 1; // Convert to zero-based index
+		// Convert to zero-based index
+		const monthIndex = parseInt(month, 10) - 1;
 
-		monthElement.textContent = monthAbbreviations[monthIndex]?? "ERRO"; // Invalid entry fallback
+		// Invalid entry fallback
+		monthElement.textContent = monthAbbreviations[monthIndex]?? "ERRO";
 	});
 }
 
