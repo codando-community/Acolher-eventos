@@ -1,15 +1,6 @@
-## INDICE
-
-* [SOBRE](#sobre)
-* [MAPA](#mapa)
-* [CREDITOS](#creditos)
-</br>
-
 ## SOBRE
 
 Site agregador dos eventos realizados por todos os gerúndios do projeto Acolher.
-
-## MAPA
 
 ```
 .
