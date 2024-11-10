@@ -1,7 +1,7 @@
 function generateEvent(container, date, title, summary, eventLink, recordingLink, tags, gerundio) {
 
 	// Create card row and set attributes
-	const cardRow = createElementWithClasses("div", "card-row");
+	const cardRow = createElementWithClasses("div", "cardRow");
 	cardRow.setAttribute("data-tags", tags.join(","));
 	cardRow.setAttribute("gerundio-tags", gerundio);
 
@@ -13,18 +13,18 @@ function generateEvent(container, date, title, summary, eventLink, recordingLink
 
 	// Card date and card main content
 	const cardDate = createCardDate(date);
-	const cardMain = createElementWithClasses("div", "card-main");
+	const cardMain = createElementWithClasses("div", "cardMain");
 	appendAnimations(cardMain);
 
 	// Card info section
-	const cardInfo = createElementWithClasses("div", "card-info");
+	const cardInfo = createElementWithClasses("div", "cardInfo");
 	cardInfo.appendChild(createCardTitle(title));
 	cardInfo.appendChild(createCardSummary(summary));
 	cardInfo.appendChild(createTagDiv(tags, gerundio));
 	cardMain.appendChild(cardInfo);
 
 	// Card aside section
-	const cardAside = createElementWithClasses("div", "card-aside");
+	const cardAside = createElementWithClasses("div", "cardAside");
 	cardAside.appendChild(createPortrait(summary));
 	cardAside.appendChild(createLinkButton(date, eventLink, recordingLink));
 	cardMain.appendChild(cardAside);
@@ -46,16 +46,16 @@ function createElementWithClasses(tag, ...classes) {
 }
 
 function createCardDate(date) {
-	const cardDate = createElementWithClasses("div", "card-date");
+	const cardDate = createElementWithClasses("div", "cardDate");
 
 	// Extract day and month
 	const [year, month, day] = date.split("-");
 
-	const dayElement = createElementWithClasses("div", "card-day");
+	const dayElement = createElementWithClasses("div", "cardDay");
 	dayElement.textContent = day;
 	cardDate.appendChild(dayElement);
 
-	const monthElement = createElementWithClasses("div", "card-month");
+	const monthElement = createElementWithClasses("div", "cardMonth");
 	monthElement.textContent = month;
 	cardDate.appendChild(monthElement);
 
@@ -72,18 +72,18 @@ function appendAnimations(container) {
 }
 
 function createCardTitle(title) {
-	const cardTitle = createElementWithClasses("h2", "card-title");
+	const cardTitle = createElementWithClasses("h2", "cardTitle");
 	cardTitle.textContent = title;
 
 	return cardTitle;
 }
 
 function createCardSummary(summary) {
-	const cardSummary = createElementWithClasses("div", "card-summary");
-	const summaryText = createElementWithClasses("p", "summary-text");
+	const cardSummary = createElementWithClasses("div", "cardSummary");
+	const summaryText = createElementWithClasses("p", "summaryText");
 	summaryText.textContent = summary;
 
-	const summaryExpand = createElementWithClasses("button", "card-button", "summary-expand");
+	const summaryExpand = createElementWithClasses("button", "cardButton", "summaryExpand");
 	summaryExpand.textContent = "Ler mais";
 	summaryExpand.onclick = () => {
 		summaryText.style.webkitLineClamp = "none";
@@ -96,7 +96,7 @@ function createCardSummary(summary) {
 }
 
 function createTagDiv(tags, gerundio) {
-	const tagDiv = createElementWithClasses("div", "card-tags");
+	const tagDiv = createElementWithClasses("div", "cardTags");
 	tags.forEach(tag => {
 		const tagText = createElementWithClasses("span", "tag", gerundio.toLowerCase());
 		tagText.textContent = tag;
@@ -142,7 +142,7 @@ function createLinkButton(date, eventLink, recordingLink) {
 	const linkButton = document.createElement("a");
 	const isEventUpcoming = eventDate >= currentDate;
 
-	linkButton.classList.add("card-button", isEventUpcoming ? "button-event" : "button-recording");
+	linkButton.classList.add("cardButton", isEventUpcoming ? "buttonEvent" : "buttonRecording");
 	linkButton.href = isEventUpcoming ? eventLink : recordingLink;
 	linkButton.textContent = isEventUpcoming ? "Acessar" : "Gravação";
 
@@ -154,14 +154,14 @@ function styleEventByDate(cardRow, cardMain, date) {
 	const currentDate = normalizeDate(new Date());
 
 	if (eventDate < currentDate) {
-		cardRow.classList.add("finished-event");
+		cardRow.classList.add("finishedEvent");
 	} else if (eventDate.getTime() === currentDate.getTime()) {
-		cardMain.classList.add("current-event");
+		cardMain.classList.add("currentEvent");
 	}
 }
 
 function insertEventInOrder(container, newEvent, newEventDate) {
-	const events = container.querySelectorAll(".card-row");
+	const events = container.querySelectorAll(".cardRow");
 
 	if (events.length === 0) {
 		container.appendChild(newEvent);
@@ -183,7 +183,7 @@ function insertEventInOrder(container, newEvent, newEventDate) {
 }
 
 function populateComboBox(container) {
-	const events = container.querySelectorAll(".card-row");
+	const events = container.querySelectorAll(".cardRow");
 	const tagsSet = new Set();
 	const gerundioTagsSet = new Set();
 
@@ -196,7 +196,7 @@ function populateComboBox(container) {
 	});
 
 	// Populate combo box
-	const combinedComboBox = document.getElementById("combined-filter");
+	const combinedComboBox = document.getElementById("combinedFilter");
 	const tagsOptGroup = createOptGroup("Áreas", tagsSet);
 	const gerundioOptGroup = createOptGroup("Gerúndios", gerundioTagsSet);
 
@@ -217,7 +217,7 @@ function createOptGroup(label, tagsSet) {
 }
 
 function filterEvents() {
-	const selectedValue = document.getElementById("combined-filter").value;
+	const selectedValue = document.getElementById("combinedFilter").value;
 	const events = document.querySelectorAll(".card");
 
 	// Display events based on selected filter
@@ -230,4 +230,4 @@ function filterEvents() {
 	});
 }
 
-document.getElementById("combined-filter").addEventListener("change", filterEvents);
+document.getElementById("combinedFilter").addEventListener("change", filterEvents);

@@ -1,6 +1,6 @@
 // Replace month numbers with their abbreviations
 function replaceMonth() {
-	const monthElements = document.body.querySelectorAll(".card-month");
+	const monthElements = document.body.querySelectorAll(".cardMonth");
 	const monthAbbreviations = ["Jan", "Fev", "Mar", "Abr", "Maio", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
 	monthElements.forEach(monthElement => {

@@ -1,5 +1,5 @@
 // Fill out cards built by cardGenerator.js
-var container = document.getElementById("events-container");
+var container = document.getElementById("eventsContainer");
 generateEvent(
 	container,
 	"2024-11-11",

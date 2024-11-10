@@ -22,14 +22,15 @@ Site agregador dos eventos realizados por todos os gerúndios do projeto Acolher
 │   ├── cardGenerator
 │   ├── cardInfo
 │   ├── headerCarousel
-│   └── monthFormat
+│   ├── monthFormat
+│   └── pagination
 ├── index
 └── readme
 ```
 
 ## CREDITOS
 
-Gabriel Lacerda - CSS
+Gabriel Lacerda - JS/CSS
 </br>
 Rafael Vaz - JS
 </br>

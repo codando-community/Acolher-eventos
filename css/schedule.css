@@ -14,7 +14,7 @@ main {
 	justify-content: center;
 }
 
-#filter-container {
+#filterContainer {
 	grid-area: filter;
 	justify-self: end;
 
@@ -23,13 +23,13 @@ main {
 	}
 }
 
-#events-container {
+#eventsContainer {
 	grid-area: events;
 }
 
 
 /* ---- Card ---- */
-.card-row {
+.cardRow {
 	display: flex;
 
 	&:not(:last-of-type) {
@@ -37,7 +37,7 @@ main {
 	}
 }
 
-.card-date {
+.cardDate {
 	display: flex;
 	position: absolute;
 	z-index: 1; /* Prevent overlap by the card if current event */
@@ -56,12 +56,12 @@ main {
 	}
 }
 
-.card-day,
-.card-month {
+.cardDay,
+.cardMonth {
 	font-size: 2.5rem;
 }
 
-.card-month {
+.cardMonth {
 	margin-left: 1rem;
 
 	@media (width >= 800px) {
@@ -70,7 +70,7 @@ main {
 	}
 }
 
-.card-main {
+.cardMain {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -84,13 +84,13 @@ main {
 	}
 }
 
-.card-info {
+.cardInfo {
 	grid-area: info;
 	padding: 2rem 2rem 2rem 3rem;
 	pointer-events: none;
 }
 
-.card-aside {
+.cardAside {
 	grid-area: side;
 	display: flex;
 	flex-direction: column;
@@ -103,7 +103,7 @@ main {
 	}
 }
 
-.card-button {
+.cardButton {
 	background-color: var(--light);
 	border: none;
 	border-radius: 999px;
@@ -116,7 +116,7 @@ main {
 }
 
 @media (hover: hover) and (pointer: fine) { /* Ensure mouse states aren't triggered for mobile view */
-	.card-button {
+	.cardButton {
 		&:hover {
 			background-color: lch(from var(--light) calc(l - 20) c h);
 			color: #fff;
@@ -131,7 +131,7 @@ main {
 
 
 /* ---- Info ---- */
-.card-title {
+.cardTitle {
 	margin-bottom: 1rem;
 	font-weight: bold;
 	font-size: 2.5rem;
@@ -148,13 +148,13 @@ main {
 	}
 }
 
-.card-summary {
+.cardSummary {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 1rem;
 }
 
-.summary-text {
+.summaryText {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 3;
@@ -162,7 +162,7 @@ main {
 	overflow: hidden;
 }
 
-.summary-expand {
+.summaryExpand {
 	align-self: flex-end;
 	padding: 1rem;
 	font-size: 1.2rem;
@@ -172,7 +172,7 @@ main {
 	}
 }
 
-.card-tags {
+.cardTags {
 	display: flex;
 	flex-flow: row wrap;
 }
@@ -202,7 +202,7 @@ main {
 	}
 }
 
-.card-aside > .card-button {
+.cardAside > .cardButton {
 	padding: 1.6rem 3.2rem;
 
 	@media (width >= 800px) {
@@ -212,9 +212,9 @@ main {
 
 
 /* ---- Finished event ---- */
-.finished-event {
-	.card-date *,
-	.card-info * {
+.finishedEvent {
+	.cardDate *,
+	.cardInfo * {
 		opacity: .5;
 	}
 
@@ -224,14 +224,14 @@ main {
 		filter: grayscale(100%);
 	}
 
-	:where(.card-button) {
+	:where(.cardButton) {
 		background-color: #aaa;
 	}
 }
 
 
 /* ---- Current event ---- */
-.current-event {
+.currentEvent {
 	overflow: hidden;
 	transform: translate(0%);
 

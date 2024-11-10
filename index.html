@@ -16,22 +16,22 @@
 	<body>
 		<main>
 			<div id="header">
-				<h1 class="header-text">Eventos</h1>
-				<h1 class="header-text" id="carousel">Acolher</h1>
+				<h1 class="headerText">Eventos</h1>
+				<h1 class="headerText" id="carousel">Acolher</h1>
 			</div>
-			<div id="filter-container">
-				<select id="combined-filter" aria-label="Filtro de eventos" aria-description="Escolha de qual categoria exibir os eventos">
+			<div id="filterContainer">
+				<select id="combinedFilter" aria-label="Filtro de eventos" aria-description="Escolha de qual categoria exibir os eventos">
 					<option value="All">Escolha a categoria</option>
 				</select>
 			</div>
-			<div id="events-container">
+			<div id="eventsContainer">
 			</div>
-			<div id="page-controls">
-				<div class="control">
-					<span class="chevron previous first"></span>
-					<span class="chevron previous second"></span>
+			<div id="pageControls">
+				<div class="control" id="btnPrev">
+					<span class="chevron prev first"></span>
+					<span class="chevron prev second"></span>
 				</div>
-				<div class="control">
+				<div class="control" id="btnNext">
 					<span class="chevron next first"></span>
 					<span class="chevron next second"></span>
 				</div>
@@ -42,5 +42,6 @@
 		<script src="js/cardGenerator.js"></script>
 		<script src="js/cardInfo.js"></script>
 		<script src="js/monthFormat.js"></script>
+		<script src="js/pagination.js"></script>
 	</body>
 </html>
